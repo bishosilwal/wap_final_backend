@@ -5,6 +5,7 @@ export interface PostType {
   title: string;
   body: string;
   votes: number;
+  created_at: Date;
 }
 
 export interface AppDataType {

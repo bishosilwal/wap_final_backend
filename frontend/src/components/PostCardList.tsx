@@ -6,10 +6,10 @@ export function PostCardList() {
   const posts = globalContext.posts;
 
   return (
-    <>
+    <div className="flex flex-col gap-3">
       {posts.map((p) => {
-        return <PostCard />;
+        return <PostCard post={p} />;
       })}
-    </>
+    </div>
   );
 }

@@ -1,6 +1,6 @@
-function SideBar() {
+function LeftSideBar() {
   return (
-    <div className="h-screen bg-white shadow-lg">
+    <div className="flex h-screen bg-white shadow-lg">
       <div className="p-6">
         {/* <!-- Profile Section --> */}
         <div className="flex items-center space-x-4">
@@ -90,4 +90,4 @@ function SideBar() {
   );
 }
 
-export default SideBar;
+export default LeftSideBar;
