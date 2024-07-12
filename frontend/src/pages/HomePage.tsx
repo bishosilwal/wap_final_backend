@@ -1,5 +1,6 @@
 import React from "react";
 import { useGlobalContext } from "../data/GlobalContext";
+import { Button } from "src/@/components/ui/button";
 
 function HomePage() {
   const globalContext = useGlobalContext();
@@ -7,6 +8,7 @@ function HomePage() {
   return (
     <div>
       <h2>Home Page</h2>
+      <Button> Hello </Button>
       <ul>
         {posts?.map((p) => {
           return <li>{p.title}</li>;
