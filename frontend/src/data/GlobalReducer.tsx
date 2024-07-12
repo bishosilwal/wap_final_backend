@@ -34,16 +34,16 @@ const globalReducer = (appData: AppDataType, action: any) => {
         ],
       };
     }
-    case "added": {
+    case "create": {
       return {
         ...appData,
         posts: [
           ...appData.posts,
           {
-            id: action.id,
-            title: action.text,
-            body: action.body,
-            vote: action.vote,
+            id: null,
+            title: action.post.title,
+            body: action.post.body,
+            votes: 0,
           },
         ],
       };
