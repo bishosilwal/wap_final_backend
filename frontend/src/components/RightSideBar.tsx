@@ -7,7 +7,7 @@ function RightSideBar() {
         <input
           type="text"
           placeholder="Search"
-          className="w-full p-2 border rounded-full bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-500"
+          className="w-full p-2 border rounded-full hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-cyan-500"
         />
       </div>
       {/* <!-- Trending Topics --> */}

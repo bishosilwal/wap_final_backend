@@ -51,8 +51,8 @@ export function PostCard({ post }: { post: PostType }) {
   };
 
   return (
-    <div className="w-100 relative hover:shadow-lg hover:shadow-cyan-600 border">
-      <div className="bg-white shadow-md rounded-lg py-4 ">
+    <div className="w-100 relative hover:shadow-lg hover:shadow-gray-300 border">
+      <div className="bg-white shadow-md rounded-lg py-4 hover:bg-gray-100">
         <div className="flex items-start">
           <div className="flex-1">
             <div className="flex px-4 shadow-md">
