@@ -2,6 +2,38 @@ import { AppDataType } from "./InitialData";
 
 const globalReducer = (appData: AppDataType, action: any) => {
   switch (action.type) {
+    case "upvote": {
+      return {
+        ...appData,
+        posts: [
+          ...appData.posts.map((t) => {
+            if (t.id === action.post.id) {
+              let post = Object.assign({}, t);
+              post.votes += 1;
+              return post;
+            } else {
+              return t;
+            }
+          }),
+        ],
+      };
+    }
+    case "downVote": {
+      return {
+        ...appData,
+        posts: [
+          ...appData.posts.map((t) => {
+            if (t.id === action.post.id) {
+              let post = Object.assign({}, t);
+              post.votes -= 1;
+              return post;
+            } else {
+              return t;
+            }
+          }),
+        ],
+      };
+    }
     case "added": {
       return {
         ...appData,

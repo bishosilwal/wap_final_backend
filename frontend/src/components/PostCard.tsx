@@ -4,11 +4,52 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 // Import the specific icons you want to use
 import { faThumbsUp, faThumbsDown } from "@fortawesome/free-solid-svg-icons";
 import { PostType } from "src/data/InitialData";
+import { useDispatch } from "src/data/GlobalContext";
 
 // Add the imported icons to the library
 library.add(faThumbsUp, faThumbsDown);
 
 export function PostCard({ post }: { post: PostType }) {
+  const [showFullBody, setShowFullBody] = React.useState(false);
+  const dispatch = useDispatch();
+  const TOTAL_BODY_LENGTH = 300;
+
+  const handleUpVote = (e: React.FormEvent<HTMLElement>) => {
+    dispatch({
+      type: "upvote",
+      post: {
+        id: post.id,
+      },
+    });
+  };
+
+  const handleDownVote = (e: React.FormEvent<HTMLElement>) => {
+    dispatch({
+      type: "downVote",
+      post: {
+        id: post.id,
+      },
+    });
+  };
+
+  const handleReadMore = () => {
+    setShowFullBody(true);
+  };
+
+  const truncatePostBody = () => {
+    return (
+      <>
+        {post.body.substring(0, TOTAL_BODY_LENGTH)}&nbsp;
+        <span
+          className="text-cyan-700 cursor-pointer font-semibold"
+          onClick={handleReadMore}
+        >
+          ...Read More
+        </span>
+      </>
+    );
+  };
+
   return (
     <div className="w-100 relative hover:shadow-lg hover:shadow-cyan-600 border">
       <div className="bg-white shadow-md rounded-lg py-4 ">
@@ -31,18 +72,28 @@ export function PostCard({ post }: { post: PostType }) {
             </div>
             <div className="flex p-4 flex-col">
               <p className="text-lg font-semibold">{post.title}</p>
-              <p className="mt-2 text-gray-700 text-sm">{post.body}</p>
+              <p className="mt-2 text-gray-700 text-sm">
+                {post.body.length < TOTAL_BODY_LENGTH || showFullBody
+                  ? post.body
+                  : truncatePostBody()}
+              </p>
             </div>
             <div className="flex justify-between items-center px-4 mt-4 text-gray-500">
               <div className="flex items-center space-x-2 cursor-pointer hover:text-cyan-700">
                 Votes
                 <span className="pl-3">{post.votes}</span>
               </div>
-              <div className="flex items-center space-x-2 cursor-pointer hover:text-green-700">
+              <div
+                onClick={handleUpVote}
+                className="flex items-center space-x-2 cursor-pointer hover:text-green-700"
+              >
                 <FontAwesomeIcon icon="thumbs-up" size="1x" />
                 <span>Up Vote</span>
               </div>
-              <div className="flex items-center space-x-2 cursor-pointer hover:text-red-700">
+              <div
+                onClick={handleDownVote}
+                className="flex items-center space-x-2 cursor-pointer hover:text-red-700"
+              >
                 <FontAwesomeIcon icon="thumbs-down" size="1x" />
 
                 <span>Down Vote</span>

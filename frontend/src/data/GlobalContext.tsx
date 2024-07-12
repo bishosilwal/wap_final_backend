@@ -10,9 +10,7 @@ interface DefaultDispatchType {}
 
 const GlobalContext = React.createContext<AppDataType>({} as AppDataType);
 
-export const GlobalDispatchContext = React.createContext<DefaultDispatchType>(
-  {} as DefaultDispatchType
-);
+export const GlobalDispatchContext = React.createContext<Function>(() => {});
 
 export const GlobalContextProvider = ({ children, ...props }: Props) => {
   const [appData, dispatch] = React.useReducer(globalReducer, initialData);
