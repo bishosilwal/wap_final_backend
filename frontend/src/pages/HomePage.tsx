@@ -1,20 +1,25 @@
 import React from "react";
 import { useGlobalContext } from "../data/GlobalContext";
-import { Button } from "src/@/components/ui/button";
+import MenuBar from "src/components/MenuBar";
+import SideBar from "src/components/SideBar";
+import RightSideBar from "src/components/RightSideBar";
+import { PostCardList } from "src/components/PostCardList";
 
 function HomePage() {
   const globalContext = useGlobalContext();
-  const posts = globalContext.posts;
   return (
-    <div>
-      <h2>Home Page</h2>
-      <Button> Hello </Button>
-      <ul>
-        {posts?.map((p) => {
-          return <li>{p.title}</li>;
-        })}
-      </ul>
-    </div>
+    <>
+      <MenuBar />
+      <div className="grid grid-cols-4 gap-2" style={{ height: "100vh" }}>
+        <SideBar />
+        <div className="grid col-span-2 px-5 py-5">
+          <PostCardList />
+        </div>
+        <div className="shadow-lg p-5">
+          <RightSideBar />
+        </div>
+      </div>
+    </>
   );
 }
 
