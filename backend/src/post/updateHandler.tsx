@@ -1,14 +1,16 @@
 import { RequestHandler } from "express";
 import postService from "../services/postService";
 
-const indexHandler: RequestHandler = (req, res, next) => {
+
+const updateHandler: RequestHandler = (req, res, next) => {
   postService
-    .getAll()
+    .update({
+      id: parseInt(req.params.id),
+      votes: parseInt(req.body.votes)
+    })
     .then((r) => {
       res.status(200).json({
-        data: {
-          posts: r,
-        },
+        data: r,
       });
     })
     .catch((error) => {
@@ -19,4 +21,4 @@ const indexHandler: RequestHandler = (req, res, next) => {
     });
 }
 
-export default indexHandler;
+export default updateHandler;
