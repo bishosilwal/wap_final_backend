@@ -31,12 +31,17 @@ export function PostCard({ post }: { post: PostType }) {
   };
 
   const handleDownVote = (e: React.FormEvent<HTMLElement>) => {
-    dispatch({
-      type: "downVote",
-      post: {
-        id: post.id,
-      },
-    });
+    apiService
+      .put(UPDATE_POST_PATH + post.id, {
+        votes: post.votes - 1,
+      })
+      .then((res) => {
+        dispatch({
+          type: "downVote",
+          post: res.data.data,
+        });
+      })
+      .catch((e) => console.log(e));
   };
 
   const handleReadMore = () => {
