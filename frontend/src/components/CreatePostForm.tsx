@@ -1,5 +1,7 @@
 import * as React from "react";
 import { useDispatch } from "src/data/GlobalContext";
+import { CREATE_POST_PATH } from "src/utils/apiList";
+import apiService from "src/utils/apiService";
 
 function CreatePostForm() {
   const [title, setTitle] = React.useState<string>("");
@@ -9,13 +11,22 @@ function CreatePostForm() {
   const handleSubmit = (e: React.FormEvent<HTMLElement>) => {
     e.stopPropagation();
     e.preventDefault();
-    dispatch({
-      type: "create",
-      post: {
-        title: title,
-        body: body,
-      },
-    });
+
+    apiService
+      .post(CREATE_POST_PATH, {
+        post: {
+          title: title,
+          body: body,
+        },
+      })
+      .then((res) => {
+        dispatch({
+          type: "create",
+          post: res.data.data,
+        });
+      })
+      .catch((e) => console.log(e));
+
   };
 
   const handleChange = (e: any) => {

@@ -2,8 +2,7 @@ import * as React from "react";
 import { useDispatch, useGlobalContext } from "src/data/GlobalContext";
 import { PostCard } from "./PostCard";
 import apiService from "src/utils/apiService";
-
-const GET_POST_PATH = "/posts";
+import { GET_ALL_POST_PATH } from "src/utils/apiList";
 
 export function PostCardList() {
   const globalContext = useGlobalContext();
@@ -16,7 +15,7 @@ export function PostCardList() {
     if (loading) {
       setLoading(false);
       apiService
-        .get(GET_POST_PATH)
+        .get(GET_ALL_POST_PATH)
         .then((res) => {
           console.log(res);
           dispatch({
