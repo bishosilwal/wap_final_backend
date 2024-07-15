@@ -8,8 +8,12 @@ export function PostCardList() {
   const globalContext = useGlobalContext();
   const dispatch = useDispatch();
 
-  const posts = globalContext.posts;
+  let posts = globalContext.posts;
   const [loading, setLoading] = React.useState(true);
+  posts = {
+    ...posts,
+    data: posts.data.sort((a, b) => b.votes - a.votes),
+  };
 
   React.useEffect(() => {
     if (loading) {
@@ -17,7 +21,6 @@ export function PostCardList() {
       apiService
         .get(GET_ALL_POST_PATH)
         .then((res) => {
-          console.log(res);
           dispatch({
             type: "getAll",
             posts: res.data.posts,
