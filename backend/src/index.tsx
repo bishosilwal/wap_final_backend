@@ -21,6 +21,6 @@ app.get("*", function (req, res) {
 
 app.use(errorHandler);
 
-app.listen("3001", () => {
+app.listen("3000", () => {
   console.log("server started");
-})
+});
