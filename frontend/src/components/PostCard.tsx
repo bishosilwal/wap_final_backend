@@ -5,6 +5,8 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faThumbsUp, faThumbsDown } from "@fortawesome/free-solid-svg-icons";
 import { PostType } from "src/data/InitialData";
 import { useDispatch } from "src/data/GlobalContext";
+import apiService from "src/utils/apiService";
+import { UPDATE_POST_PATH } from "src/utils/apiList";
 
 // Add the imported icons to the library
 library.add(faThumbsUp, faThumbsDown);
@@ -15,12 +17,17 @@ export function PostCard({ post }: { post: PostType }) {
   const TOTAL_BODY_LENGTH = 300;
 
   const handleUpVote = (e: React.FormEvent<HTMLElement>) => {
-    dispatch({
-      type: "upvote",
-      post: {
-        id: post.id,
-      },
-    });
+    apiService
+      .put(UPDATE_POST_PATH + post.id, {
+        votes: post.votes + 1,
+      })
+      .then((res) => {
+        dispatch({
+          type: "upVote",
+          post: res.data.data,
+        });
+      })
+      .catch((e) => console.log(e));
   };
 
   const handleDownVote = (e: React.FormEvent<HTMLElement>) => {

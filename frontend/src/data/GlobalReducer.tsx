@@ -8,16 +8,14 @@ const globalReducer = (appData: AppDataType, action: any) => {
         posts: action.posts,
       };
     }
-    case "upvote": {
+    case "upVote": {
       return {
         ...appData,
         posts: {
           meta: appData.posts.meta,
           data: appData.posts.data.map((t) => {
             if (t.id === action.post.id) {
-              let post = Object.assign({}, t);
-              post.votes += 1;
-              return post;
+              return action.post;
             } else {
               return t;
             }
