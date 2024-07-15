@@ -27,7 +27,7 @@ function CreatePostForm() {
   };
 
   return (
-    <div className="bg-white rounded-lg shadow-lg max-w-full min-w-full mb-3 hover:bg-gray-100 hover:shadow-gray-300">
+    <div className="bg-white h-fit rounded-lg shadow-lg max-w-full min-w-full mb-3 hover:bg-gray-100 hover:shadow-gray-300">
       <h2 className="text-xl p-5 font-semibold text-gray-800">
         What's On Your Mind Today?
       </h2>

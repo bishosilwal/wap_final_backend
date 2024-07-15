@@ -26,13 +26,13 @@ function LeftSideBar() {
                   className="w-6 h-6"
                   fill="none"
                   stroke="currentColor"
-                  stroke-width="2"
+                  strokeWidth="2"
                   viewBox="0 0 24 24"
                   xmlns="http://www.w3.org/2000/svg"
                 >
                   <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
                     d="M3 7h6M3 11h6m-6 4h6m7-8h6M13 7h6m-6 4h6m-6 4h6"
                   ></path>
                 </svg>
@@ -48,13 +48,13 @@ function LeftSideBar() {
                   className="w-6 h-6"
                   fill="none"
                   stroke="currentColor"
-                  stroke-width="2"
+                  strokeWidth="2"
                   viewBox="0 0 24 24"
                   xmlns="http://www.w3.org/2000/svg"
                 >
                   <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
                     d="M4 7h16M4 11h16M4 15h16"
                   ></path>
                 </svg>
@@ -70,13 +70,13 @@ function LeftSideBar() {
                   className="w-6 h-6"
                   fill="none"
                   stroke="currentColor"
-                  stroke-width="2"
+                  strokeWidth="2"
                   viewBox="0 0 24 24"
                   xmlns="http://www.w3.org/2000/svg"
                 >
                   <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
                     d="M5 12h14M12 5l7 7-7 7"
                   ></path>
                 </svg>

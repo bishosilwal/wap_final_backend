@@ -65,7 +65,7 @@ export function PostCard({ post }: { post: PostType }) {
                 <div>
                   <h2 className="text-lg font-semibold">John Doe</h2>
                   <p className="text-gray-500 text-sm">
-                    @johndoe · {post.created_at?.toDateString()}
+                    @johndoe · {post.created_at}
                   </p>
                 </div>
               </div>

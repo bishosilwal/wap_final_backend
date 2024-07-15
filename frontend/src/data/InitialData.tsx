@@ -1,19 +1,20 @@
-import generateInitialData from "./database";
-
 export interface PostType {
   id: number | null;
   title: string;
   body: string;
   votes: number;
-  created_at: Date;
+  created_at: string;
 }
 
 export interface AppDataType {
-  posts: PostType[];
+  posts: { data: PostType[]; meta: any };
 }
 
 const initialData: AppDataType = {
-  posts: generateInitialData() as PostType[],
+  posts: {
+    data: [] as PostType[],
+    meta: {},
+  },
 };
 
 export default initialData;

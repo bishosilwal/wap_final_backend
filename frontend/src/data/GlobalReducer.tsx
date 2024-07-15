@@ -2,11 +2,18 @@ import { AppDataType } from "./InitialData";
 
 const globalReducer = (appData: AppDataType, action: any) => {
   switch (action.type) {
+    case "getAll": {
+      return {
+        ...appData,
+        posts: action.posts,
+      };
+    }
     case "upvote": {
       return {
         ...appData,
-        posts: [
-          ...appData.posts.map((t) => {
+        posts: {
+          meta: appData.posts.meta,
+          data: appData.posts.data.map((t) => {
             if (t.id === action.post.id) {
               let post = Object.assign({}, t);
               post.votes += 1;
@@ -15,14 +22,15 @@ const globalReducer = (appData: AppDataType, action: any) => {
               return t;
             }
           }),
-        ],
+        },
       };
     }
     case "downVote": {
       return {
         ...appData,
-        posts: [
-          ...appData.posts.map((t) => {
+        posts: {
+          meta: appData.posts.meta,
+          data: appData.posts.data.map((t) => {
             if (t.id === action.post.id) {
               let post = Object.assign({}, t);
               post.votes -= 1;
@@ -31,41 +39,48 @@ const globalReducer = (appData: AppDataType, action: any) => {
               return t;
             }
           }),
-        ],
+        },
       };
     }
     case "create": {
       return {
         ...appData,
-        posts: [
-          ...appData.posts,
-          {
-            id: null,
-            title: action.post.title,
-            body: action.post.body,
-            votes: 0,
-          },
-        ],
+        posts: {
+          meta: appData.posts.meta,
+          data: [
+            ...appData.posts.data,
+            {
+              id: null,
+              title: action.post.title,
+              body: action.post.body,
+              votes: 0,
+            },
+          ],
+        },
       };
     }
     case "changed": {
       return {
         ...appData,
-        posts: [
-          ...appData.posts.map((t) => {
+        posts: {
+          meta: appData.posts.meta,
+          data: appData.posts.data.map((t) => {
             if (t.id === action.post.id) {
               return action.post;
             } else {
               return t;
             }
           }),
-        ],
+        },
       };
     }
     case "deleted": {
       return {
         ...appData,
-        posts: appData.posts.filter((t) => t.id !== action.id),
+        posts: {
+          meta: appData.posts.meta,
+          data: appData.posts.data.filter((t) => t.id !== action.id),
+        },
       };
     }
     default: {
