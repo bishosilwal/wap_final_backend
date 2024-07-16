@@ -6,6 +6,8 @@ import RightSideBar from "src/components/RightSideBar";
 import { PostCardList } from "src/components/PostCardList";
 import CreatePostForm from "src/components/CreatePostForm";
 import BackForwardLink from "src/components/BackForwardLink";
+import "react-toastify/dist/ReactToastify.css";
+
 
 function HomePage() {
   const globalContext = useGlobalContext();

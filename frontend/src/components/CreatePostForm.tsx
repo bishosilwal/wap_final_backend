@@ -1,4 +1,5 @@
 import * as React from "react";
+import { toast } from "react-toastify";
 import { useDispatch } from "src/data/GlobalContext";
 import { CREATE_POST_PATH } from "src/utils/apiList";
 import apiService from "src/utils/apiService";
@@ -24,11 +25,20 @@ function CreatePostForm() {
           type: "create",
           post: res.data.data,
         });
+        toast.success("Post created successfully!", {
+          position: "top-right",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "colored",
+        });
         setTitle("");
         setBody("");
       })
       .catch((e) => console.log(e));
-
   };
 
   const handleChange = (e: any) => {
