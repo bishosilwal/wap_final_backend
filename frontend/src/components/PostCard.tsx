@@ -68,7 +68,7 @@ export function PostCard({ post }: { post: PostType }) {
           <div className="flex-1">
             <div className="flex px-4 shadow-md">
               <img
-                src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
+                src={require("../images/bisho.png")}
                 alt="Profile Picture"
                 className="w-12 h-12 rounded-full mr-4"
               />

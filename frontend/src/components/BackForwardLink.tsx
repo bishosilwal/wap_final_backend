@@ -57,7 +57,7 @@ function BackForwardLink() {
         onClick={backHandler}
       >
         <FontAwesomeIcon icon="arrow-left" />
-        <span className="pointer-events-none text-sm text-gray-500 absolute top-0 left-6 w-max opacity-0 transition-opacity group-hover:opacity-100">
+        <span className="pointer-events-none text-sm text-gray-500 absolute -top-4 left-0 w-max opacity-0 transition-opacity group-hover:opacity-100">
           Back
         </span>
       </div>
@@ -66,7 +66,7 @@ function BackForwardLink() {
         onClick={forwardHandler}
       >
         <FontAwesomeIcon icon="arrow-right" />
-        <span className="pointer-events-none text-sm text-gray-500 absolute top-0 left-6 w-max opacity-0 transition-opacity group-hover:opacity-100">
+        <span className="pointer-events-none text-sm text-gray-500 absolute -top-4 -left-5 w-max opacity-0 transition-opacity group-hover:opacity-100">
           Forward
         </span>
       </div>

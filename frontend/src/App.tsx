@@ -3,12 +3,17 @@ import GlobalContextProvider from "./data/GlobalContext";
 import HomePage from "./pages/HomePage";
 import ErrorPage from "./pages/ErrorPage";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import AboutUsPage from "./pages/AboutUsPage";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <HomePage />,
     errorElement: <ErrorPage />,
+  },
+  {
+    path: "/about-us",
+    element: <AboutUsPage />,
   },
   {
     path: "/profile/:id",
