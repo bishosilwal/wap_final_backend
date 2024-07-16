@@ -37,7 +37,14 @@ function BackForwardLink() {
   const forwardHandler = (e: any) => {
     currentDate.setDate(currentDate.getDate() + 1);
     apiService
-      .get(GET_ALL_POST_PATH + "?current_date=" + currentDate)
+      .get(GET_ALL_POST_PATH, {
+        params: {
+          current_date: currentDate
+            .toISOString()
+            .slice(0, 19)
+            .replace("T", " "),
+        },
+      })
       .then((res) => {
         dispatch({
           type: "getAll",
