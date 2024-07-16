@@ -9,6 +9,7 @@ export interface PostType {
 export interface AppDataType {
   posts: { data: PostType[]; meta: any };
   trending: PostType[];
+  currentDate: Date;
 }
 
 const initialData: AppDataType = {
@@ -17,6 +18,7 @@ const initialData: AppDataType = {
     meta: {},
   },
   trending: [] as PostType[],
+  currentDate: new Date(),
 };
 
 export default initialData;

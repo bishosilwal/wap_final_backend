@@ -61,7 +61,6 @@ export function PostCard({ post }: { post: PostType }) {
       </>
     );
   };
-
   return (
     <div className="w-100 relative hover:shadow-lg hover:shadow-gray-300 border">
       <div className="bg-white shadow-md rounded-lg py-4 hover:bg-gray-100">

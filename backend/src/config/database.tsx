@@ -12,6 +12,7 @@ const databaseConfig: dbConfigType = {
     password: "root",
     database: "wap_final",
     connectTimeout: 60000,
+    timezone: "Z",
   },
   listPerPage: 10,
 };

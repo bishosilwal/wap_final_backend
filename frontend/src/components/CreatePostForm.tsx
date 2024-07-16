@@ -24,6 +24,8 @@ function CreatePostForm() {
           type: "create",
           post: res.data.data,
         });
+        setTitle("");
+        setBody("");
       })
       .catch((e) => console.log(e));
 

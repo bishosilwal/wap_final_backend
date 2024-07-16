@@ -6,6 +6,7 @@ const globalReducer = (appData: AppDataType, action: any) => {
       return {
         ...appData,
         posts: action.posts,
+        currentDate: action?.currentDate || appData.currentDate,
       };
     }
     case "upVote": {

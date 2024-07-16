@@ -30,9 +30,10 @@ export function PostCardList() {
     }
     return () => {};
   }, []);
-
   if (loading) {
     return <div className="flex justify-center">LOADING...</div>;
+  } else if (!posts.data.length) {
+    return <div className="flex justify-center">No data available.</div>;
   } else {
     return (
       <div className="flex flex-col gap-3">

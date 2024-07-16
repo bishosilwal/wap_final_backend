@@ -3,13 +3,17 @@ import databaseConfig from "../config/database";
 import dbHelper from "../helpers/dataHelper";
 import db from "./db";
 
-async function getAll(page = 1) {
+async function getAll(currentDate) {
+  let page: number = 1;
+  currentDate ||= getCurrentDateStr();
+
   const offset = dbHelper.getOffset(page, databaseConfig.listPerPage);
 
   const rows = await db.query(
     `SELECT id, title, body, votes, created_at, updated_at
-    FROM post ORDER BY created_at desc LIMIT ${offset},${databaseConfig.listPerPage}`
+    FROM post WHERE DATE(created_at) = DATE("${currentDate}") ORDER BY created_at desc LIMIT ${offset},${databaseConfig.listPerPage}`
   );
+
   const data = dbHelper.emptyOrRows(rows);
   const meta = { page };
 
@@ -31,31 +35,32 @@ async function getById(id: number) {
   }
 }
 
-async function create(params: {title: string, body: string}) {
+async function create(params: { title: string; body: string }) {
   try {
-      const result: QueryResult = await db.query(
-        `INSERT INTO post (title, body, votes, created_at) VALUES("${
-          params.title
-        }", "${params.body}", 0, '${new Date()
-          .toISOString()
-          .slice(0, 19)
-          .replace("T", " ")}')`
-      );
-      if(result.constructor.name === "ResultSetHeader") {
-        return getById(result["insertId"]).then(r => r).catch(e => e);
-      }
+    const result: QueryResult = await db.query(
+      `INSERT INTO post (title, body, votes, created_at) VALUES("${
+        params.title
+      }", "${params.body}", 0, '${new Date()
+        .toISOString()
+        .slice(0, 19)
+        .replace("T", " ")}')`
+    );
+    if (result.constructor.name === "ResultSetHeader") {
+      return getById(result["insertId"])
+        .then((r) => r)
+        .catch((e) => e);
+    }
   } catch (error) {
     console.log(error);
     throw error;
   }
 }
 
-
-async function update(params: {id: number, votes: number}) {
+async function update(params: { id: number; votes: number }) {
   try {
     const result: QueryResult = await db.query(
       `UPDATE post SET votes=${params.votes} WHERE id=${params.id}`
-    )
+    );
     if (result.constructor.name === "ResultSetHeader") {
       return getById(params.id)
         .then((r) => r)
@@ -83,6 +88,10 @@ async function getTrending() {
     console.log(error);
     throw error;
   }
+}
+
+function getCurrentDateStr() {
+  return new Date().toISOString().slice(0, 19).replace("T", " ");
 }
 
 const postService = {

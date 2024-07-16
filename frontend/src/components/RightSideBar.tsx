@@ -42,7 +42,7 @@ function RightSideBar() {
         <ul className="divide-y">
           {trendingPosts.map((p) => {
             return (
-              <li className="p-4 hover:bg-gray-100">
+              <li className="p-4 hover:bg-gray-100" key={p.id}>
                 <span className="text-gray-500 text-sm">{p.created_at}</span>
                 <h3 className="font-semibold">{p.title}</h3>
                 <span className="text-gray-500 text-sm">
