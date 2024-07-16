@@ -15,12 +15,12 @@ function HomePage() {
       <MenuBar />
       <div className="grid grid-cols-4" style={{ height: "100vh" }}>
         <LeftSideBar />
-        <div className="grid col-span-2 px-5 py-5 overflow-y-scroll h-fit">
+        <div className="grid col-span-3 md:col-span-2 px-5 py-5 overflow-y-scroll h-fit">
           <CreatePostForm />
           <BackForwardLink />
           <PostCardList />
         </div>
-        <div className="shadow-lg p-5">
+        <div className="shadow-lg p-5 hidden md:flex">
           <RightSideBar />
         </div>
       </div>
