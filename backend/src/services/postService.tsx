@@ -67,11 +67,30 @@ async function update(params: {id: number, votes: number}) {
   }
 }
 
+async function getTrending() {
+  try {
+    const result: QueryResult = await db.query(
+      `
+        SELECT * FROM post
+        WHERE DATE(created_at) >= CURDATE() - INTERVAL 7 DAY
+        ORDER BY votes DESC
+        LIMIT 3;
+        `
+    );
+    const data = dbHelper.emptyOrRows(result);
+    return data;
+  } catch (error) {
+    console.log(error);
+    throw error;
+  }
+}
+
 const postService = {
   getAll: getAll,
   getById: getById,
   create: create,
   update: update,
-}
+  getTrending: getTrending,
+};
 
 export default postService;

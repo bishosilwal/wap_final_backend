@@ -57,6 +57,12 @@ const globalReducer = (appData: AppDataType, action: any) => {
         },
       };
     }
+    case "receivedTrending": {
+      return {
+        ...appData,
+        trending: action.posts,
+      };
+    }
     case "changed": {
       return {
         ...appData,

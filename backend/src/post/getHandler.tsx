@@ -17,6 +17,8 @@ const getHandler: RequestHandler = (req, res, next) => {
           msg: error.message,
         });
       });
+  } else {
+    next(new Error("Id not given!"));
   }
 };
 

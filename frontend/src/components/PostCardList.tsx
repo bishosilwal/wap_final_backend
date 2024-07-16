@@ -17,10 +17,10 @@ export function PostCardList() {
 
   React.useEffect(() => {
     if (loading) {
-      setLoading(false);
       apiService
         .get(GET_ALL_POST_PATH)
         .then((res) => {
+          setLoading(false);
           dispatch({
             type: "getAll",
             posts: res.data.posts,
